@@ -10,6 +10,7 @@ const initialState = {
     admin_wallet : false,
     splittoEWallet : false,
     splittoRwallet : false,
+    bonus_sponsor : false,
 
     //admin send Wallet
     to_E_Wallet : false,
@@ -65,6 +66,10 @@ export const ConstantSlice = createSlice({
         setSplittoRwallet: (state, action) => { // not used to prevent error only
             state.splittoRwallet = action.payload
         },
+        setBonus_sponsor: (state, action) => { // not used to prevent error only
+            state.bonus_sponsor = action.payload
+        },
+
         setLevel_1: (state, action) => { // not used to prevent error only
             state.level_1 = action.payload
         },
@@ -103,7 +108,7 @@ export const ConstantSlice = createSlice({
 export const { 
     setApp_title, setApp_domain, setApp_description, setApp_tags, setApp_currency, setAdmin_wallet,setSplittoEWallet,setSplittoRwallet,
     setLevel_1, setLevel_2, setLevel_3, setLevel_4, setLevel_5, setLevel_6, setLevel_7, setLevel_8, setLevel_9, setLevel_10, setTo_E_Wallet,
-    setTo_R_Wallet
+    setTo_R_Wallet, setBonus_sponsor
 } = ConstantSlice.actions
 
 export default ConstantSlice.reducer

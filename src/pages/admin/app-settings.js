@@ -13,7 +13,7 @@ import { setCreatepackagesidebar, setEditpackagesidebar } from 'redux/reducers/M
 import {
     setApp_title, setApp_domain, setApp_description, setApp_tags, setApp_currency, setAdmin_wallet,setSplittoEWallet,setSplittoRwallet,
     setLevel_1, setLevel_2, setLevel_3, setLevel_4, setLevel_5, setLevel_6, setLevel_7, setLevel_8, setLevel_9, setLevel_10,
-    setTo_E_Wallet, setTo_R_Wallet
+    setTo_E_Wallet, setTo_R_Wallet, setBonus_sponsor
   } from 'redux/reducers/ConstantReducer'
 //--------------------------------------
 
@@ -31,7 +31,7 @@ export default function Users() {
     const { createpackagesidebar } = useSelector((state) => state.MainmenuReducer)
     const { editpackagesidebar } = useSelector((state) => state.MainmenuReducer)
     const { 
-        app_title,app_domain, app_description, app_tags, app_currency,admin_wallet, splittoEWallet, splittoRwallet,
+        app_title,app_domain, app_description, app_tags, app_currency,admin_wallet, splittoEWallet, splittoRwallet, bonus_sponsor,
         level_1, level_2, level_3,level_4,level_5,level_6,level_7, level_8, level_9, level_10,  to_E_Wallet,  to_R_Wallet
        
        
@@ -80,6 +80,7 @@ export default function Users() {
                 dispatch(setSplittoRwallet(data[0].alocate_R_Wallet))
                 dispatch(setTo_E_Wallet(data[0].to_E_Wallet))
                 dispatch(setTo_R_Wallet(data[0].to_R_Wallet))
+                dispatch(setBonus_sponsor(data[0].bonus_sponsor))
 
                 dispatch(setLevel_1(data[0].sponsor_L1))
                 dispatch(setLevel_2(data[0].sponsor_L2))
@@ -113,12 +114,12 @@ export default function Users() {
       setSpinner(true)
       dispatch(setError(false))
         const data = {
-        app_title,app_domain, app_description, app_tags,app_currency,admin_wallet, splittoEWallet, splittoRwallet,
+        app_title,app_domain, app_description, app_tags,app_currency,admin_wallet, splittoEWallet, splittoRwallet, bonus_sponsor,
         level_1, level_2, level_3,level_4,level_5,level_6,level_7, level_8, level_9, level_10, to_E_Wallet, to_R_Wallet
         
       }
 
- 
+ console.log(data)
 
        const URL = process.env.NEXT_PUBLIC_API_URL_V1
         return axios({
@@ -422,8 +423,26 @@ export default function Users() {
     </p> 
     }
 </div>
+<div className="mb-5">
+    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bonus Sponsor in % of package Value</label>
+    <input   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm 
+    rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+    dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" 
+    name="bonus_sponsor"
+    value = {bonus_sponsor || ""}
+    onChange={(e)=>dispatch(setBonus_sponsor(e.target.value))}
+    />
+      {formError && formError.path === 'bonus_sponsor' &&     
+    <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
+        {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
+        <i className="icofont-arrow-right animate-ping  mr-2"></i>
+        <span className="text-red-900 "> {formError.message}</span> 
+    </p> 
+    }
+</div>
 <div className="mb-5 border-2 border-gray-300 pl-6">
-<h4 className="ml-10">Bonus Sponsor Level</h4>
+<h4 className="ml-10">Matching SPONSOR generasi </h4>
 
 <div className="md:flex md:items-center mb-2 mt-4 text-gray-700 dark:text-gray-100">
 <div className="md:w-1/3">
