@@ -78,7 +78,7 @@ const handleLoginDelay = async () => {
         email, password
     }
 
-console.log(data)
+
   setSpinner(true)
 
     const URL = process.env.NEXT_PUBLIC_API_URL_V1
@@ -95,7 +95,7 @@ console.log(data)
         .then(async response => {
 
             const data = response.data
-            console.log(data)
+          
             
             setSpinner(false)
             
