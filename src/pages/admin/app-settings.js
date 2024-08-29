@@ -118,7 +118,7 @@ export default function Users() {
         
       }
 
-      console.log(data)
+ 
 
        const URL = process.env.NEXT_PUBLIC_API_URL_V1
         return axios({

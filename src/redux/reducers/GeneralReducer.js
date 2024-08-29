@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     masterUser: 'CRAZYRICH', // for not login user to see m-tree
-    domain: 'https://yourdomain.com',
-    title: 'YOUR DOMAIN',
-    desc: 'YOUR COMMUNITY',
+    domain: 'https://admin.fivefortunefx.com',
+    title: 'FIVE FORTUNEFX',
+    desc: 'FIVE FORTUNE',
     currency: 'Wallet',
     crypto: 'USDT',
     
