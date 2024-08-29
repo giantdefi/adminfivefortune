@@ -22,8 +22,8 @@ export default function Users() {
     const { isLogin, isBinary, username, token, pvalue } = useSelector((state) => state.AuthReducer)
     const {  users_stats } = useSelector((state) => state.StatsReducer)
   
-console.log('------------------------------------')
-console.log(users_stats)
+
+    
 
     return (
         <>

@@ -83,7 +83,7 @@ export default function Users() {
             .then(async response => {
 
                 const data = response.data
-                console.log(data)
+              //  console.log(data)
 
                 if (data.isSuccess) {
 
@@ -131,7 +131,7 @@ export default function Users() {
             .then(async response => {
 
                 const data = response.data
-                console.log(data)
+              //  console.log(data)
 
                 if (data.isSuccess) {
 
@@ -157,7 +157,6 @@ export default function Users() {
     }
  
 
-console.log(history)
 
     return (
         <>

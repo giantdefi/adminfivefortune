@@ -132,7 +132,7 @@ export default function SidebarBody() {
                     <i className="icofont-monitor text-xl mr-1 text-yellow-300 hover:text-green-300"></i> App Setting</p>
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a onClick={toggleSound} className={` cursor-pointer flex flex-row items-center h-10  pl-6 
                     ${itemSelected === 15 && dropdownOpen === 6 && 'bg-white bg-opacity-10'}`}>
                   <span className="text-sm ">
@@ -142,7 +142,7 @@ export default function SidebarBody() {
                     } Sound Setting
                   </span>
                 </a>
-              </li>
+              </li> */}
 
            </ul>
           </li>
@@ -252,58 +252,7 @@ export default function SidebarBody() {
 
      
 
-          <li className={`${dropdownOpen === 5 ? 'bg-white bg-opacity-5' : 'bg-transparent'} border-gray-400 border-opacity-20  border-b `}>
-            <Link href=""><a onClick={() => handleDropdownToggle(5)} className="flex  flex-row justify-between items-center h-16  hover:bg-white hover:bg-opacity-10 text-white-600 pl-3 ">
-
-              {!mainSidebarOpen &&
-                <span className="ml-1" onClick={toggleSidebar}>
-                  <svg width="24px" className="h-6 w-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                  </svg>
-                </span>}
-              {mainSidebarOpen &&
-                <>
-                  <div className="flex flex-col">
-                    <p className="ml-2 text-sm tracking-wide truncate uppercase"><i className="icofont-calendar text-lg mr-1 text-yellow-300 hover:text-green-300"></i> HISTORY</p>
-                    {/* <p className="ml-2 tracking-wide truncate text-xs">All Transaction History</p> */}
-                  </div>
-                  <div className="mr-4">
-                    <svg width="24px" className={`fill-current h-6 w-6 transform  transition duration-150 ease-in-out ${dropdownOpen === 5 ? '' : '-rotate-90'} `}
-                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                    </svg>
-                  </div>
-                </>}
-            </a>
-            </Link>
-
-            <ul className={mainSidebarOpen && dropdownOpen === 5 ? "d-block animated fadeIn bg-blue-700/20 dark:bg-slate-900 py-2 pb-6" : "hidden"}>
-            
-            <li className="cursor-pointer hover:text-green-300">
-                <a onClick={()=>router.push('/users/history-send-poins')} className={` flex flex-row items-center h-10  pl-6 
-                    ${itemSelected === 9 && dropdownOpen === 5 && 'bg-white bg-opacity-10'}`}>
-                  <p className="text-sm ">
-                    <i className="icofont-paper-plane text-lg mr-1 text-yellow-300 hover:text-green-300"></i> History of Sent {currency}</p>
-                </a>
-              </li>
-              <li className="cursor-pointer hover:text-green-300">
-                <a onClick={()=>router.push('/users/history-receive-poins')} className={` flex flex-row items-center h-10  pl-6 
-                    ${itemSelected === 10 && dropdownOpen === 5 && 'bg-white bg-opacity-10'}`}>
-                  <p className="text-sm ">
-                    <i className="icofont-download text-lg mr-1 text-yellow-300 hover:text-green-300"></i> History of Receive Poins</p>
-                </a>
-              </li>
-              <li className="cursor-pointer hover:text-green-300">
-                <a onClick={()=>router.push('/users/history-receive-maneki')} className={` flex flex-row items-center h-10  pl-6 
-                    ${itemSelected === 12 && dropdownOpen === 5 && 'bg-white bg-opacity-10'}`}>
-                  <p className="text-sm ">
-                    <i className="icofont-cat-face text-lg mr-1 text-yellow-300 hover:text-green-300"></i> History of Receive Maneki</p>
-                </a>
-              </li>
-                       
-            </ul>
-          </li>
-
+      
 
 
           {/* //------------------- DROPDOWN 4 ------------------------ */}

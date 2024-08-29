@@ -63,7 +63,7 @@ export default function Users() {
               if (response.data.isSuccess) {
 
                 
-              console.log(data)
+            //  console.log(data)
              
                 dispatch(setApp_title(data[0].app_title))
                 dispatch(setApp_domain(data[0].app_domain))
@@ -181,8 +181,8 @@ export default function Users() {
 
 
 
-<div className="flex flex-col md:flex-row ">
-<div className="w-full md:w-1/2 pb-20 border bg-gray-300 dark:bg-gray-800 p-6">
+<div className="flex flex-col lg:flex-row ">
+<div className="w-full lg:w-1/2 pb-20 border bg-gray-300 dark:bg-gray-800 p-6">
                 
 
 <div className="max-w-sm ml-10 mt-10">
@@ -355,7 +355,7 @@ export default function Users() {
 
 </div>
 
-<div className="w-full p-6 md:w-1/2 pb-20 border bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-100">
+<div className="w-full p-6 lg:w-1/2 pb-20 border bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-100">
 <div className="w-full max-w-sm border mx-auto mt-4">
 
 <div className="max-w-sm mx-auto mb-5">
