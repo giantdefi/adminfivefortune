@@ -94,7 +94,7 @@ export default function TopNavigation() {
     </a>
 
     <a onClick={()=>router.push('/')} className="cursor-pointer  flex centered  w-[250px]  mr-6">
-    <img src="/assets/f5-logo.png" className=" animated fadeInDown " alt="logo" /> 
+    <img src="/assets/F5-logo.png" className=" animated fadeInDown " alt="logo" /> 
     {/* <h3 className="text-white">HEADER LOGO</h3> */}
     </a>
 
