@@ -49,8 +49,12 @@ export default function Users() {
         }
     }
     useEffect(() => {
-       
-        handleGetHistory()
+        if(!isLogin) {
+            router.push('/')
+        }else{
+            handleGetHistory()
+        }
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

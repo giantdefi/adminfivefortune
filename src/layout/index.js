@@ -13,7 +13,7 @@ import ModalMessage from "components/modal/ModalMessage"
 import ModalToast from "components/modal/ModalToast"
 import ReferralLink from "components/reflink/ReferralLink"
 
-import ModalMenuDrawer from "components/modal/ModalMenuDrawer" 
+//import ModalMenuDrawer from "components/modal/ModalMenuDrawer" 
 import MobileTopNavigation from "./MobileTopNavigation"
 
 import { setWidth } from 'redux/reducers/GeneralReducer'
@@ -114,7 +114,7 @@ export default function MainLayout({ children }) { // not used yet!
 
       {modalMessage && <ModalMessage />}
       {modalToast && <ModalToast />}
-      {modalMenuDrawer && <ModalMenuDrawer />}
+      {/* {modalMenuDrawer && <ModalMenuDrawer />} */}
   
    
     

@@ -18,15 +18,21 @@ export default function Users() {
     const router = useRouter()
     const dispatch = useDispatch()
     const [spinner, setSpinner] = useState(false)
+    const { isLogin, token } = useSelector((state) => state.AuthReducer)
     const { mainSidebarOpen } = useSelector((state) => state.MainmenuReducer)
     const { adminPackageArray, allowRelaodPackage } = useSelector((state) => state.PackageReducer)
-    const { isLogin } = useSelector((state) => state.AuthReducer)
+ 
     const { createpackagesidebar } = useSelector((state) => state.MainmenuReducer)
     const { editpackagesidebar } = useSelector((state) => state.MainmenuReducer)
 
 
     useEffect(() => {
-        getPackage()
+        if(!isLogin) {
+            router.push('/')
+        }else{
+             getPackage()
+        }
+       
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
@@ -163,14 +169,14 @@ export default function Users() {
 
                   
 
-                    <div className="min-h-screen w-10/12 md:w-full pb-20">
-                    <div className="grid md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-3 px-8 gap-10 lg:gap-2 text-zinc-800 mt-10">
+    <div className="min-h-screen w-10/12 md:w-full pb-20">
+    <div className="grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-3 px-8 gap-10 lg:gap-2 text-zinc-800 mt-10">
                    
                    
        {adminPackageArray && adminPackageArray.map((item, index)=>{
         return (
               <div   className="flex flex-col items-center bg-gradient-to-br from-sky-100 via-blue-100 
-        to-gray-100 p-8 rounded-lg shadow-lg relative border-8 border-sky-500 max-w-sm" key={index}>
+        to-gray-100 p-2 rounded-lg shadow-lg relative border-8 border-sky-500 max-w-sm" key={index}>
      
    
         <div>
@@ -227,7 +233,7 @@ export default function Users() {
                 <b>Matching Level :  {item.mathcing_level} level</b>
             </p>
          
-            <div className="flex justify-around mt-20 w-full">
+            <div className="flex justify-around mt-4 w-full">
               
                     <button onClick={()=>handleToEdit(item)} className="border px-4 py-2 border-violet-400 border-4 hover:bg-violet-100 rounded-xl">
 					<i className="icofont-ui-edit"></i> Edit

@@ -39,7 +39,12 @@ export default function Users() {
 
 
      useEffect(() => {
-      getAdminConstant()
+        if(!isLogin) {
+            router.push('/')
+        }else{
+            getAdminConstant()
+        }
+      
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
     

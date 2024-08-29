@@ -5,7 +5,7 @@ import { setLoginSidebar, setLeftSidebar } from 'redux/reducers/MainmenuReducer'
 import Username from 'components/inputforms/login/Username'
 //---- REDUX STORE ---------------------
 import { useSelector, useDispatch } from 'react-redux'
-import SidebarBody from "menu/SidebarBody"
+
 //--------------------------------------
 
 export default function Home() {
@@ -22,10 +22,13 @@ return (
 
 <div  class={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform  ${!leftSidebar && "-translate-x-full"} bg-white w-96 mt-24 dark:bg-gray-800`} tabindex="-1" aria-labelledby="drawer-navigation-label">     
    
-{/* <SidebarBody/> */}
+    
 
+     
+    <h5 id="drawer-navigation-label" class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
+  
 
-<div class="py-4 overflow-y-auto">
+  <div class="py-4 overflow-y-auto">
       <ul class="space-y-2 font-medium">
          <li>
             <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
