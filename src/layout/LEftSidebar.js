@@ -99,13 +99,13 @@ return (
             </button>
             <ul  class=" py-2 space-y-2">
                   <li>
-                     <button  class="flex items-center w-full p-2 text-gray-900 transition duration-75 
+                     <button onClick={()=>handleMenu('/admin/send-wallet')} class="flex items-center w-full p-2 text-gray-900 transition duration-75 
                      rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                          <i className="icofont-paper-plane text-lg mr-1 text-green-800 hover:text-green-300"></i>
                         Send Wallet</button>
                   </li>
                   <li>
-                     <button class="flex items-center w-full p-2 text-gray-900 transition duration-75
+                     <button  onClick={()=>handleMenu('/admin/wd-request')} class="flex items-center w-full p-2 text-gray-900 transition duration-75
                       rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                           <i className="icofont-wallet text-lg mr-1 text-green-700 hover:text-green-300"></i>
                         WD Request</button>

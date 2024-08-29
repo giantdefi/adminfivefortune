@@ -39,11 +39,11 @@ export default function Users() {
 
 
      useEffect(() => {
-        if(!isLogin) {
-            router.push('/')
-        }else{
+        // if(!isLogin) {
+        //     router.push('/')
+        // }else{
             getAdminConstant()
-        }
+        //}
       
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -187,7 +187,7 @@ export default function Users() {
 
 
 <div className="flex flex-col lg:flex-row ">
-<div className="w-full lg:w-1/2 pb-20 border bg-gray-300 dark:bg-gray-800 p-6">
+<div className="w-full lg:w-1/2 pb-20 border bg-gray-300 dark:bg-gray-800  pr-6">
                 
 
 <div className="max-w-sm ml-10 mt-10">
@@ -422,8 +422,8 @@ export default function Users() {
     </p> 
     }
 </div>
-<div className="mb-5 border-2 border-gray-300">
-<h4 className="ml-20">Bonus Sponsor Level</h4>
+<div className="mb-5 border-2 border-gray-300 pl-6">
+<h4 className="ml-10">Bonus Sponsor Level</h4>
 
 <div className="md:flex md:items-center mb-2 mt-4 text-gray-700 dark:text-gray-100">
 <div className="md:w-1/3">
@@ -431,14 +431,14 @@ export default function Users() {
 Level-1
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_1"
 value = {level_1 || "0"}
 onChange={(e)=>dispatch(setLevel_1(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_1' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -453,14 +453,14 @@ onChange={(e)=>dispatch(setLevel_1(e.target.value))}
 Level-2
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_2"
 value = {level_2 || "0"}
 onChange={(e)=>dispatch(setLevel_2(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_2' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -475,14 +475,14 @@ onChange={(e)=>dispatch(setLevel_2(e.target.value))}
 Level-3
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_3"
 value = {level_3 || "0"}
 onChange={(e)=>dispatch(setLevel_3(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_3' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -497,14 +497,14 @@ onChange={(e)=>dispatch(setLevel_3(e.target.value))}
 Level-4
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2  
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_4"
 value = {level_4 || "0"}
 onChange={(e)=>dispatch(setLevel_4(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_4' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -519,14 +519,14 @@ onChange={(e)=>dispatch(setLevel_4(e.target.value))}
 Level-5
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px]  w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_5"
 value = {level_5 || "0"}
 onChange={(e)=>dispatch(setLevel_5(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_5' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -541,14 +541,14 @@ onChange={(e)=>dispatch(setLevel_5(e.target.value))}
 Level-6
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_6"
 value = {level_6 || "0"}
 onChange={(e)=>dispatch(setLevel_6(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_6' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -563,14 +563,14 @@ onChange={(e)=>dispatch(setLevel_6(e.target.value))}
 Level-7
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_7"
 value = {level_7|| "0"}
 onChange={(e)=>dispatch(setLevel_7(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_7' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -585,14 +585,14 @@ onChange={(e)=>dispatch(setLevel_7(e.target.value))}
 Level-8
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_8"
 value = {level_8 || "0"}
 onChange={(e)=>dispatch(setLevel_8(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_8' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -607,14 +607,14 @@ onChange={(e)=>dispatch(setLevel_8(e.target.value))}
 Level-9
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_9"
 value = {level_9 || "0"}
 onChange={(e)=>dispatch(setLevel_9(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_9' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
@@ -629,14 +629,14 @@ onChange={(e)=>dispatch(setLevel_9(e.target.value))}
 Level-10
 </label>
 </div>
-<div className="md:w-1/4">
-<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 
+<div className="md:w-1/4 flex">
+<input className="bg-white dark:bg-gray-800 dark:text-white  border border-gray-200 rounded w-full  px-4 h-[40px] w-1/2 
 text-gray-700  focus:outline-none  focus:border-sky-500" 
 name="level_10"
 value = {level_10 || "0"}
 onChange={(e)=>dispatch(setLevel_10(e.target.value))}
-/>
-</div><span className="ml-2">%</span>
+/><span className="ml-2">%</span>
+</div>
 {formError && formError.path === 'level_10' &&     
 <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
 {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
