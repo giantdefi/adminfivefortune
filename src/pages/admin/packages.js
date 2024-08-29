@@ -148,7 +148,7 @@ export default function Users() {
 
             <div className="md:pt-12  min-h-screen">
 
-            <div className="h-[300px] bg-sky-700 flex  fixed w-full">
+            <div className="h-[300px] bg-sky-700 flex  fixed w-full max-w-md lg:max-w-full">
           
           </div>
 

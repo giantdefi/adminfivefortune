@@ -22,7 +22,7 @@ export default function TopNavigation() {
     const router = useRouter()
     const dispatch = useDispatch()
  
-    const { isLogin, userID, token, username, fullname } = useSelector((state) => state.AuthReducer)
+    const { isLogin, userID, token, name, email } = useSelector((state) => state.AuthReducer)
  
     const { mainSidebarOpen } = useSelector((state) => state.MainmenuReducer)
  
@@ -47,7 +47,7 @@ export default function TopNavigation() {
                 <div className="fixed right-0 top-2 flex justify-between items-center">
                     <ul className="flex centered ">
                             <>
-                                <p className="text-sm mr-2">{isLogin? username : 'GUEST'} </p>
+                                <p className="text-sm mr-2">{isLogin? email : 'GUEST'} </p>
                                 <button className=" flex-initial rounded-full  border-2 border-gray-500  cursor-pointer w-[40px] h-[40px]">
 
                                     <img src="/assets/img/avatar.webp" className="rounded-full w-[40px]" alt="users" />

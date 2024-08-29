@@ -102,7 +102,7 @@ export default function SidebarBody() {
               {mainSidebarOpen &&
                 <>
                   <div className="flex flex-col">
-                    <p className="ml-2 text-sm tracking-wide truncate uppercase"><i className="icofont-gear text-red-300 text-lg"></i> SETTINGS</p>
+                    <p className="ml-2 text-sm tracking-wide truncate uppercase"><i className="icofont-gear text-red-300 text-lg mr-2"></i> SETTINGS</p>
                     {/* <p className="ml-2 tracking-wide truncate text-xs">Update Data</p> */}
                   </div>
                   <div className="mr-4">
@@ -159,7 +159,7 @@ export default function SidebarBody() {
                 <>
                   <div className="flex flex-col">
                   
-                    <p className="ml-2 tracking-wide truncate text-sm"><i className="icofont-gear text-red-300 text-xl"></i>  PACKAGES</p>
+                    <p className="ml-2 tracking-wide truncate text-sm"><i className="icofont-certificate-alt-1 text-red-300 text-xl mr-2"></i>  PACKAGES</p>
                     {/* <p className="ml-2 tracking-wide truncate text-xs">Network & Breeding</p> */}
                   </div>
                   <div className="mr-4">
@@ -213,7 +213,7 @@ export default function SidebarBody() {
               {mainSidebarOpen &&
                 <>
                   <div className="flex flex-col">
-                    <p className="ml-2 text-sm tracking-wide truncate uppercase"><i className="icofont-electron text-red-300 text-lg"></i> TRANSACTION</p>
+                    <p className="ml-2 text-sm tracking-wide truncate uppercase"><i className="icofont-electron text-red-300 text-lg mr-2"></i> TRANSACTION</p>
                     {/* <p className="ml-2 tracking-wide truncate text-xs">Purchase & Transfer</p> */}
                   </div>
                   <div className="mr-4">
@@ -241,7 +241,7 @@ export default function SidebarBody() {
                 <a onClick={()=>router.push('/admin/wd-request')} className={` flex flex-row items-center h-10  pl-6 
                     ${itemSelected === 4 && dropdownOpen === 2 && 'bg-white bg-opacity-10'}`}>
                   <p className="text-sm ">
-                    <i className="icofont-paper-plane text-lg mr-1 text-yellow-300 hover:text-green-300"></i> WD REquest</p>
+                    <i className="icofont-wallet text-lg mr-1 text-yellow-300 hover:text-green-300"></i> WD REquest</p>
                 </a>
               </li>
 
