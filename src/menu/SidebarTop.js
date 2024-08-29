@@ -51,7 +51,7 @@ export default function SidebarTop() {
 
                      
                         <a onClick={() => onMenuClick('/')} className="flex cursor-pointer w-full">
-                        {mainSidebarOpen ?  <h3 className="ml-4 animated fadeInDown">You logo here</h3> : ''} 
+                        <img src="/assets/F5-logo.png" className="ml-4 h-6 w-[180px] mt-2 animated fadeInDown" alt="logo" />
                         
                            
                         
