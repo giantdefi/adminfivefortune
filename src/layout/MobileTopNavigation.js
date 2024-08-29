@@ -108,7 +108,7 @@ export default function TopNavigation() {
     :
 
     isLogin ?
-        <button onClick={()=>router.push('/users')} className="rounded-full cursor-pointer w-[50px] mt-4">
+        <button onClick={()=>router.push('/admin')} className="rounded-full cursor-pointer w-[50px] mt-4">
             <img src="/assets/img/user-red.webp" className="rounded-full w-10 " alt="users" />
         </button>
         :
