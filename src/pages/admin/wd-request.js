@@ -177,7 +177,8 @@ export default function Users() {
   <div className="w-full lg:w-10/12 border min-h-screen text-white justify-center bg-gray-500 pt-10">  
 
   <div className="flex w-full justify-cebter">
-  <h4 className="mx-auto">WD REQUEST</h4> 
+  <h4 className="mx-auto">WD REQUEST (DEMO ONLY)</h4> 
+
   </div>
   <div className="flex justify-end">
   <button className=" w-[200px] my-6 mr-6 text-white bg-blue-700
