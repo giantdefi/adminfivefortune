@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   isLogin: false,
   isActive : false,
+  isAdmin : false,
   name: false,
   email: false,
   sponsor: false, // object
@@ -23,6 +24,9 @@ export const AuthSlice = createSlice({
     },
     setIsActive: (state, action) => {
       state.isActive = action.payload
+    },
+    setIsAdmin: (state, action) => {
+      state.isAdmin = action.payload
     },
     setName: (state, action) => {
       state.name = action.payload
@@ -51,7 +55,7 @@ export const AuthSlice = createSlice({
 
 })
 
-export const { setLogout,setIsLogin, setName, setIsActive, setToken, setWallet, setSponsor, setAuthToken, setEmail
+export const { setLogout,setIsLogin, setName, setIsActive, setIsAdmin, setToken, setWallet, setSponsor, setAuthToken, setEmail
   
   
 

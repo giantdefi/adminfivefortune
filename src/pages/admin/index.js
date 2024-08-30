@@ -143,7 +143,7 @@ export default function Users() {
 
                     </div> */}
 
-                    <div className="min-h-screen  w-full pb-20 px-10">
+<div className="min-h-screen  w-full pb-20 px-10">
  
 
  <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4 mt-10 w-full ">

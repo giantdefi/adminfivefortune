@@ -12,7 +12,7 @@ import { setShowLogin } from 'redux/reducers/SidebarReducer'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLoginSidebar } from 'redux/reducers/MainmenuReducer'
 import { setError } from 'redux/reducers/ErrorReducer'
-import {  setIsLogin, setName,setWallet,setEmail, setToken, setSponsor, setIsActive, setAuthToken } from 'redux/reducers/AuthReducer'
+import {  setIsLogin, setName, setWallet,setEmail, setToken, setSponsor, setIsActive, setIsAdmin, setAuthToken } from 'redux/reducers/AuthReducer'
 import { setModalLogin,setModalRegister, setModalMessage, setModalToast } from 'redux/reducers/ModalReducer'
 
 //--------------------------------------
@@ -56,7 +56,6 @@ const togglePassword = () =>{
 
 const handleLogin = () => {
 
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 
    
     if (!email) {
@@ -108,6 +107,7 @@ const handleLoginDelay = async () => {
                 dispatch(setToken(token))
                 dispatch(setName(dataLogin.name))
                 dispatch(setIsActive(dataLogin.isActive))
+                dispatch(setIsAdmin(dataLogin.isAdmin))
                 dispatch(setSponsor(dataLogin.sponsor))            
                 dispatch(setWallet(dataLogin.wallet)) 
              
