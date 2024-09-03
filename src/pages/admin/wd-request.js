@@ -39,6 +39,8 @@ export default function Users() {
     const [amount, setAmount] = useState(false)
     const [history, setHistory] = useState(false)
     const [allowReload, setAllowReload] = useState(false)
+    const [wdRequestrray, setWdRequestrray] = useState(false)
+    const [spinnerPID, setSpinnerPID] = useState(false)
         
     const handleNumberChange = (e) => {
         dispatch(setError(false))
@@ -48,11 +50,16 @@ export default function Users() {
                 setAmount(value)
         }
     }
+
+  
+
     useEffect(() => {
+
+        console.log('-----------reload----------')
         if(!isLogin) {
             router.push('/')
         }else{
-            handleGetHistory() 
+            handleWDRequest() 
         }
        
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,7 +68,7 @@ export default function Users() {
     useEffect(() => {
         if(allowReload){
             setLoader(true)
-             handleGetHistory()
+            handleWDRequest()
              setAllowReload(false)
              setTimeout(()=>{
                 setLoader(false)
@@ -71,60 +78,15 @@ export default function Users() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allowReload])
 
-    const handleGetHistory = () => {
+
+    const handleWDRequest = () => {
      
-       const URL = process.env.NEXT_PUBLIC_API_URL_V1
-        return axios({
-            url: `${URL}/admin/history-send-wallet`,
-            method: 'GET',
-          
-            'headers': {
-                'Authorization': token,
-                accept: 'application/json',
-                'content-type': 'application/json',
-            }
-        })
-            .then(async response => {
-
-                const data = response.data
-              //  console.log(data)
-
-                if (data.isSuccess) {
-
-                    setHistory(data.dataLimit)                
-                 //   dispatch(setModalToast({ type: data.type, title : data.title, message: data.message })) 
-
-
-
-                } 
-
-               
-
-            }).catch(function (error) {
-               
-                console.log(error)
-                return dispatch(setModalMessage({ type: 'danger', title: "Network Error!", message: 'Please check your Internet connection' }))
-            })
-    }
-
-    const handleSendWallet = () => {
-     
-        if (!to_userid) {
-            setSpinner(false)
-            return dispatch(setError({ path: "to_userid", message: 'To Userid is required' }))
-        }
-        if (!amount) {
-            setSpinner(false)
-            return dispatch(setError({ path: "amount", message: 'Amount is required' }))
-        }
-  
-
         const data = {to_userid, amount}
 
         const URL = process.env.NEXT_PUBLIC_API_URL_V1
         return axios({
-            url: `${URL}/admin/send-wallet`,
-            method: 'POST',
+            url: `${URL}/admin/wd-request`,
+            method: 'get',
             data,
             'headers': {
                 'Authorization': token,
@@ -139,7 +101,8 @@ export default function Users() {
 
                 if (data.isSuccess) {
 
-                    setAllowReload(true)             
+                  
+                    setWdRequestrray(data.dataLimit)            
                  //   dispatch(setModalToast({ type: data.type, title : data.title, message: data.message })) 
 
 
@@ -160,6 +123,56 @@ export default function Users() {
             })
     }
  
+const handleWDPaid  = (pid, status) => {
+    setSpinnerPID(pid)
+    setSpinner(true)
+        const data = {pid, status }
+
+     //   console.log(data)
+
+        const URL = process.env.NEXT_PUBLIC_API_URL_V1
+        return axios({
+            url: `${URL}/admin/wd-confirm`,
+            method: 'post',
+            data,
+            'headers': {
+                'Authorization': token,
+                accept: 'application/json',
+                'content-type': 'application/json',
+            }
+        })
+            .then(async response => {
+
+                const data = response.data
+              //  console.log(data)
+
+                if (data.isSuccess) {
+
+                    setAllowReload(true) 
+                    setSpinner(false)
+                 //   setWdRequestrray(data.dataLimit)            
+                 //   dispatch(setModalToast({ type: data.type, title : data.title, message: data.message })) 
+
+
+
+                } else {
+
+                    setSpinner(false)
+                 //   dispatch(setModalToast({ type: 'error', title: "Activation Fail!", message: response.data.message }))
+                    return dispatch(setError({ path: response.data.path, message: response.data.message }))
+                }
+
+               
+
+            }).catch(function (error) {
+                setSpinner(false)
+                console.log(error)
+                return dispatch(setModalMessage({ type: 'danger', title: "Network Error!", message: 'Please check your Internet connection' }))
+            })
+  
+}
+//   console.log(allowReload)
+//   console.log(spinnerPID)
 
 
     return (
@@ -174,27 +187,23 @@ export default function Users() {
 <div className="md:pt-12  min-h-screen">
 <div className="flex flex-col md:flex-row w-full centered">   
 
-  <div className="w-full lg:w-10/12 border min-h-screen text-white justify-center bg-gray-500 pt-10">  
+  <div className="w-full lg:w-10/12  min-h-screen text-white justify-center bg-gray-800 pt-10">  
 
   <div className="flex w-full justify-cebter">
-  <h4 className="mx-auto">WD REQUEST (DEMO ONLY)</h4> 
+  <h2 className="mx-auto bold">WD REQUEST</h2> 
 
   </div>
-  <div className="flex justify-end">
-  <button className=" w-[200px] my-6 mr-6 text-white bg-blue-700
-    rounded-lg text-sm px-5 py-2.5 
-    text-center dark:bg-blue-600 ">  Only Pending</button>
-  </div> 
-   
-    <div className="flex w-full overflow-auto">
 
+   
+    <div className="flex flex-col w-full overflow-auto">
+    <p className="ml-4">100 Latest WD Request</p>
                         <table className="w-full text-sm text-left text-gray-500 mt-2">
 
                                 <thead className="font-semibold  text-white uppercase bg-purple-700 border-b border-gray-600">
 
                                     <tr className="_gradient_purple">
                                         <th className="py-3 text-center"> Userid</th>
-                                        <th className="py-3 text-center"> Amount</th>
+                                        <th className="py-3 text-center"> Amount<br/>wallet address</th>
                                         <th className="py-3 text-center"> Time</th>
                                         <th className="py-3 text-center"> Status</th>
                                         <th className="py-3 text-center"> Action</th>
@@ -205,13 +214,16 @@ export default function Users() {
                             
                                  
 
-                                    { history && history.map((item, index) => {
+                                    { wdRequestrray && wdRequestrray.map((item, index) => {
                                         return (
                                             <>
                                                                                     
                                          <tr className={`${index === 0 ? ' text-yellow-400' : ' text-white'} bg-[#4B0082] h-12 border-b border-purple-700`} key={index}>
-                                               <td className="text-center text-sm">{item.to_userid}</td>
-                                                <td className="text-center text-sm"> {parseFloat(item.amount).toFixed(2)}</td>
+                                               <td className="text-center text-sm">{item.userid}</td>
+                                                <td className="text-center text-sm"> 
+                                                  <span className="bold">USDT  {parseFloat(item.amount).toFixed(2)}</span><br/>
+                                                    {item.wallet_address}
+                                                    </td>
                                             
                                                
                                                 <td className="text-center text-[12px] leading-3 ">
@@ -220,19 +232,48 @@ export default function Users() {
                                                     <span className="text-yellow-400 text-[10px]">{moment(moment.unix(item.time), "YYYY/MM/DD h:i:s").fromNow()}</span>
                                                 </td>
                                                 <td className="text-center text-sm w-[250px]"> 
-                                                <button className="w-1/2 my-6 text-white bg-blue-700
+                                                {item.paid?
+                                                <button className=" my-6 text-white bg-red-700/50
                                                rounded-lg text-sm px-5 py-2.5 
-                                                text-center dark:bg-blue-600 ">  Pending</button>
+                                                text-center dark:bg-blue-600 ">
+                                                      {spinner && spinnerPID === item.id &&
+                                                 <svg style={{ maxWidth: 40 }} role="status" className="mr-1 inline w-4 h-4 text-gray-200 dark:text-gray-300 animate-spin  fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                                </svg>}
+                                                    {item.paid? "PAID" : "Pending"}</button>:
+                                                      <button className=" my-6 text-white bg-blue-700
+                                                      rounded-lg text-sm px-5 py-2.5 
+                                                       text-center dark:bg-blue-600 ">
+                                                             {spinner && spinnerPID === item.id &&
+                                                        <svg style={{ maxWidth: 40 }} role="status" className="mr-1 inline w-4 h-4 text-gray-200 dark:text-gray-300 animate-spin  fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                           <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                                           <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                                       </svg>}
+                                                           {item.paid? "PAID" : "Pending"}</button>
+                                                        }
 
                                                 </td>
                                                 <td className="text-center text-sm"> 
-                                                <button className="w-1/2 my-6 text-white bg-blue-700 hover:bg-blue-800 
-                                                focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
+                                                { item.paid?    <button onClick={()=>handleWDPaid(item.id, item.paid)} className=" my-6 text-white bg-red-700   font-medium rounded-lg text-sm px-5 py-2.5 
                                                 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
-                                                
-                                                 Confirm as PAID
+                                                {spinner && spinnerPID === item.id &&
+                                                 <svg style={{ maxWidth: 40 }} role="status" className="mr-1 inline w-4 h-4 text-gray-200 dark:text-gray-300 animate-spin  fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                                </svg>}
+                                                 RESET 
+                                                 </button> :
+                                                <button onClick={()=>handleWDPaid(item.id, item.paid)} className="my-6 text-white bg-blue-700   font-medium rounded-lg text-sm px-5 py-2.5 
+                                                text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
+                                                 {spinner && spinnerPID === item.id &&
+                                                 <svg style={{ maxWidth: 40 }} role="status" className="mr-1 inline w-4 h-4 text-gray-200 dark:text-gray-300 animate-spin  fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                                </svg>}
+                                                 Confirm 
                                                  </button>
-                                                    
+                                    }
                                                     </td>
                                             </tr>
 

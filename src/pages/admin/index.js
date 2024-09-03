@@ -102,7 +102,7 @@ export default function Users() {
              dispatch(setActive_users(data.data[0].active_users))
              dispatch(setTotal_wd(data.data[0].wd_request))
              dispatch(setTotal_paid(data.data[0].wd_paid))
-            /// console.log(data.UserStats)
+             console.log(data.UserStats)
              dispatch(setUsers_stats(data.UserStats))
     
               }

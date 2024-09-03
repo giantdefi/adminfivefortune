@@ -103,7 +103,7 @@ const handleSubmit = () => {
     setSpinner(true)
    
 
-  console.log(data)  
+//  console.log(data)  
 
   const URL = process.env.NEXT_PUBLIC_API_URL_V1
   return axios({
@@ -119,7 +119,7 @@ const handleSubmit = () => {
       .then(async response => {
 
           const data = response.data
-          console.log(data)
+        //  console.log(data)
 
           if (data.isSuccess) {
             setSpinner(false)

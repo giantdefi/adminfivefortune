@@ -2,8 +2,6 @@ import React, {useRef, useEffect, useState } from "react"
 import Link from 'next/link'
 import axios from 'axios'
 import Router, { useRouter } from "next/router"
- import PasswordLogin from 'components/inputforms/login/Password'
- import { jwtDecode } from 'jwt-decode';
 //---- REDUX STORE ---------------------
 import { resetErrors } from 'redux/reducers/ErrorReducer'
 import { resetForm } from 'redux/reducers/FormReducer'

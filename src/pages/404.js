@@ -16,7 +16,7 @@ export default function Home() {
                 <meta name="description" content="404 page not found" />
             </Head>
 
-            <div className="mb-10">
+            <div className="mb-10 min-h-screen">
                 <div className="pt-2 mx-4">
                     <div className="flex justy-center items-center md:mt-40" >
                         <div className="m-auto text-center text-white">

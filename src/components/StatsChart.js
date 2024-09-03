@@ -38,13 +38,13 @@ export default function Users() {
                                                 <Line 
                                                 data= {{
                                                  //  labels : users_stats.week, //["week1", "week2", "week3", "week4", "week5", "week6"],
-                                                   labels:  users_stats && users_stats.map((data) => data.week), 
+                                                   labels:  users_stats && users_stats.map((data) => data.date), 
                                                   datasets : [
                                                         {
                                                             label : "Users Register",
                                                           
                                                         //   data : users_stats.stats, //[20, 30, 50, 25, 45, 65],
-                                                          data: users_stats && users_stats.map((data) => data.stats),
+                                                          data: users_stats && users_stats.map((data) => data.total),
                                                             backgroundColor: [
                                                                 "#ff9900",
                                                               

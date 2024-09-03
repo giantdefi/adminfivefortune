@@ -32,7 +32,8 @@ export default function Users() {
     const { editpackagesidebar } = useSelector((state) => state.MainmenuReducer)
     const { 
         app_title,app_domain, app_description, app_tags, app_currency,admin_wallet, splittoEWallet, splittoRwallet, bonus_sponsor,
-        level_1, level_2, level_3,level_4,level_5,level_6,level_7, level_8, level_9, level_10,  to_E_Wallet,  to_R_Wallet
+        level_1, level_2, level_3,level_4,level_5,level_6,level_7, level_8, level_9, level_10,  
+        to_E_Wallet,  to_R_Wallet
        
        
      } = useSelector((state) => state.ConstantReducer)
@@ -119,7 +120,7 @@ export default function Users() {
         
       }
 
- console.log(data)
+
 
        const URL = process.env.NEXT_PUBLIC_API_URL_V1
         return axios({
@@ -135,7 +136,7 @@ export default function Users() {
             .then(async response => {
       
                 const data = response.data
-                console.log(data)
+             //   console.log(data)
       
                 if (data.isSuccess) {
             
@@ -305,48 +306,6 @@ export default function Users() {
 
     />
       {formError && formError.path === 'splittoRwallet' &&     
-    <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
-        {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
-        <i className="icofont-arrow-right animate-ping  mr-2"></i>
-        <span className="text-red-900 "> {formError.message}</span> 
-    </p> 
-    }
-</div>
-</div>
-
-<div className="mb-5 border p-4">
-    <p className="mb-4 bold text-gray-800 dark:text-gray-100">Split Admin Send Wallet</p>
-<div className="mb-5">
-    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Split to E-Wallet (in %)</label>
-    <input   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm 
-    rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
-    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-    dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" 
-    name="to_E_Wallet"
-    value = {to_E_Wallet || ""}
-    onChange={(e)=>dispatch(setTo_E_Wallet(e.target.value))}
-
-    />
-     {formError && formError.path === 'to_E_Wallet' &&     
-    <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
-        {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
-        <i className="icofont-arrow-right animate-ping  mr-2"></i>
-        <span className="text-red-900 "> {formError.message}</span> 
-    </p> 
-    }
-</div>
-<div className="mb-5">
-    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Split to R-Wallet (in %)</label>
-    <input   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm 
-    rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
-    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-    dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" 
-    name="to_R_Wallet"
-    value = {to_R_Wallet || ""}
-    onChange={(e)=>dispatch(setTo_R_Wallet(e.target.value))}
-
-    />
-      {formError && formError.path === 'to_R_Wallet' &&     
     <p className="text-red-800 ml-2 text-sm animated backInLeft items-center flex">
         {/* <span className="animate-ping inline-flex h-3 w-3 rounded-full bg-red-100 opacity-75 mr-2" /> */}
         <i className="icofont-arrow-right animate-ping  mr-2"></i>
