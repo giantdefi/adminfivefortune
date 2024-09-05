@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { setFormPassword } from 'redux/reducers/FormReducer'
 import { setError } from 'redux/reducers/ErrorReducer'
-import { setCurrentpassword } from 'redux/reducers/AuthReducer'
+import { setCurrentpassword } from 'redux/reducers/FormReducer'
 //-------------------------------------------------------
 
 
@@ -14,7 +14,7 @@ export default function Password() {
     const [showPassword, setShowPassword] = useState(false)
     // redux store
     const dispatch = useDispatch();
-    const { currentpassword } = useSelector((state) => state.AuthReducer)
+    const { currentpassword } = useSelector((state) => state.FormReducer)
     const { formError } = useSelector((state) => state.ErrorReducer)
 
 
@@ -28,15 +28,6 @@ export default function Password() {
             dispatch(setCurrentpassword(value))
         }
     }
-
-    // Focus input element on submit if no value
-    useEffect(() => {
-        if (formError && formError.path === 'currentpassword') {
-            // inputRef.current.focus()
-            // inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' }) // make it on center of the screen 
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [formError])
 
 
     const togglePassword = () => {

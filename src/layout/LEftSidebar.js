@@ -60,6 +60,20 @@ return (
                       <i className="icofont-monitor mr-2"></i>  
                         Apps Setting</button>
                   </li>
+
+                  <li>
+                     <button onClick={()=>handleMenu('/admin/app-settings')} class="flex items-center w-full p-2 text-gray-900 transition duration-75 
+                     rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                      <i className="icofont-email mr-2"></i>  
+                      Change Admin Email</button>
+                  </li>
+
+                  <li>
+                     <button onClick={()=>handleMenu('/admin/app-settings')} class="flex items-center w-full p-2 text-gray-900 transition duration-75 
+                     rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                      <i className="icofont-lock mr-2"></i>  
+                      Change Admin Password</button>
+                  </li>
                  
             </ul>
          </li>

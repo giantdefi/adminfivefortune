@@ -34,6 +34,10 @@ const initialState = {
   newPassword : false,
   newPasswordConfirm : false,
 
+   // change email
+   currentemail : false,
+   newEmail : false,
+
 }
 
 export const FormSlice = createSlice({
@@ -62,6 +66,14 @@ export const FormSlice = createSlice({
         setFormEmail: (state, action) => {
             state.email = action.payload
         },
+
+        setCurrentemail: (state, action) => { 
+            state.currentemail = action.payload 
+        },
+        setNewEmail: (state, action) => {
+            state.newEmail = action.payload
+        },
+
         setFormPassword: (state, action) => {
             state.password = action.payload
         },
@@ -84,6 +96,17 @@ export const FormSlice = createSlice({
       setNewPasswordConfirm: (state, action) => {
         state.newPasswordConfirm = action.payload
       },
+
+      // change password
+      setCurrentpassword: (state, action) => {
+        state.currentpassword = action.payload
+      },
+      setNewPassword: (state, action) => {
+        state.newPassword = action.payload
+      },
+      setNewPasswordConfirm: (state, action) => {
+        state.newPasswordConfirm = action.payload
+      },
  
 
         resetForm: () => initialState
@@ -95,7 +118,8 @@ export const {  resetForm,
 
     setFormSponsor, setFormName, setFormUsername, setFormPhone, setFormPassword,  
     setFormConfirmPassword, setFormEmail, setConfirmPassword, setCountry ,
-    setCurrentpassword, setNewPassword, setNewPasswordConfirm, setFirstName, setLastName
+    setCurrentpassword, setNewPassword, setNewPasswordConfirm, setFirstName, setLastName,
+    setCurrentemail, setNewEmail
 
 } = FormSlice.actions
 

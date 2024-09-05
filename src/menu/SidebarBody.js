@@ -136,6 +136,22 @@ const handleResetApp = () => {
                 </a>
               </li>
 
+              <li className="cursor-pointer hover:text-green-300">
+                <a onClick={()=>router.push('/admin/change-email')} className={` flex flex-row items-center h-10  pl-6 
+                    ${itemSelected === 14 && dropdownOpen === 1 && 'bg-white bg-opacity-10'}`}>
+                  <p className="text-sm ">
+                    <i className="icofont-email text-xl mr-1 text-yellow-300 hover:text-green-300"></i> Change Admin Email</p>
+                </a>
+              </li>
+
+              <li className="cursor-pointer hover:text-green-300">
+                <a onClick={()=>router.push('/admin/change-password')} className={` flex flex-row items-center h-10  pl-6 
+                    ${itemSelected === 14 && dropdownOpen === 1 && 'bg-white bg-opacity-10'}`}>
+                  <p className="text-sm ">
+                    <i className="icofont-lock text-xl mr-1 text-yellow-300 hover:text-green-300"></i> Change Admin Password</p>
+                </a>
+              </li>
+
            </ul>
           </li>
 
@@ -251,7 +267,7 @@ const handleResetApp = () => {
               {mainSidebarOpen &&
                 <>
                   <div className="flex flex-col">
-                    <p className="ml-2 text-sm tracking-wide truncate uppercase"><i className="icofont-electron text-red-300 text-lg mr-2"></i> RESET APP</p>
+                    <p className="ml-2 text-sm tracking-wide truncate uppercase"><i className="icofont-recycle-alt text-red-300 text-lg mr-2"></i> RESET APP</p>
                     {/* <p className="ml-2 tracking-wide truncate text-xs">Purchase & Transfer</p> */}
                   </div>
                   <div className="mr-4">
@@ -271,7 +287,7 @@ const handleResetApp = () => {
                 <a onClick={handleResetApp} className={` flex flex-row items-center h-10  pl-6 
                     ${itemSelected === 14 && dropdownOpen === 6 && 'bg-white bg-opacity-10'}`}>
                   <p className="text-sm ">
-                    <i className="icofont-recycle-alt text-xl mr-1 text-yellow-300 hover:text-green-300"></i> Reset Database</p>
+                    <i className="icofont-database text-xl mr-1 text-yellow-300 hover:text-green-300"></i> Reset Database</p>
                 </a>
               </li>
 

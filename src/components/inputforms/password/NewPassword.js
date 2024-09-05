@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { setFormPassword } from 'redux/reducers/FormReducer'
 import { setError } from 'redux/reducers/ErrorReducer'
-import { setNewPassword } from 'redux/reducers/AuthReducer'
+import { setNewPassword } from 'redux/reducers/FormReducer'
 //-------------------------------------------------------
 
 
@@ -14,7 +14,7 @@ export default function Password() {
     const [showPassword, setShowPassword] = useState(false)
     // redux store
     const dispatch = useDispatch();
-    const { newPassword } = useSelector((state) => state.AuthReducer)
+    const { newPassword } = useSelector((state) => state.FormReducer)
     const { formError } = useSelector((state) => state.ErrorReducer)
 
 
