@@ -116,7 +116,7 @@ export default function Users() {
         <div className="mt-5">
           
            <p><i className="icofont-warning text-red-600"></i>This action  will reset database to the initial state</p>
-           <p className="mt-2">All data in the database will be truncated and only one user will remain with the userid FX1001, email: master@gmail.com as the admin user.</p>
+           <p className="mt-2">All data in the database will be truncated and only one user will remain with the userid FX10001, email: master@gmail.com as the admin user.</p>
 <p className="mt-2 text-green-800">This reset does not affect the App Setting data and Packages that have been created by the admin.</p>
 <p className="mt-2"> <i className="icofont-warning text-red-600"></i>It is highly recommended that the admin back up the database before performing this action.</p>
 <p className="mt-2"> <i className="icofont-warning text-red-600"></i>This action cannot be recovered once performed.</p>

@@ -19,7 +19,7 @@ export default function SidebarFooter() {
 
       <p className="py-3 h-1/3 text-center flex justify-center items-center text-sm ">
       
-        {mainSidebarOpen && <> <span >support</span> : <span className="text-[12px]">cryptonativecoding@gmail.com</span> </>}
+        {mainSidebarOpen && <> <span className="text-[12px] ml-2">cryptonativecoding@gmail.com</span> </>}
       </p>
 
     </>

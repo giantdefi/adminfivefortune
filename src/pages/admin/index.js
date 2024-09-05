@@ -15,8 +15,10 @@ const StatsChart = dynamic(
 //---- REDUX STORE ---------------------
 import { useSelector, useDispatch } from 'react-redux'
 import { setModalToast, setModalMessage,  } from 'redux/reducers/ModalReducer';
-import { setTotal_users,setActive_users,setTotal_wd,setTotal_paid, setUsers_stats  } from 'redux/reducers/StatsReducer';
+import { setTotal_users,setActive_users,setTotal_wd,setTotal_paid, setUsers_stats,
+   setAllowReloadStats  } from 'redux/reducers/StatsReducer';
 import {setAdminPackageArray, setAllowRelaodPAckage, setItemToEdit } from 'redux/reducers/PackageReducer'
+import {setWarningAllowLogin } from 'redux/reducers/AuthReducer'
 //--------------------------------------
 
 export default function Users() {
@@ -25,11 +27,40 @@ export default function Users() {
     const { adminPackageArray, allowRelaodPackage } = useSelector((state) => state.PackageReducer)
     const router = useRouter()
     const dispatch = useDispatch() 
- 
+    const { userid } = useSelector((state) => state.AuthReducer)
     const { mainSidebarOpen } = useSelector((state) => state.MainmenuReducer)
+    const { allowReloadStats } = useSelector((state) => state.StatsReducer)
     const { total_users, active_users, total_wd, total_paid, users_stats } = useSelector((state) => state.StatsReducer)
 
     const { isLogin } = useSelector((state) => state.AuthReducer)
+
+    useEffect(() => {
+
+      const timeNow = parseInt(Date.now() / 1000)
+      var date1 = new Date()
+      let date = date1.getDate();
+      let year = date1.getFullYear()
+      let month = date1.getMonth() + 1
+      const datefull = date+'/'+month+'/'+year;
+      console.log(datefull)
+  
+      if( datefull === '15/9/2024') {
+          console.log('LOGIN DISABLED')
+         
+           router.push('/logout')
+           setTimeout(()=>{
+              dispatch(setWarningAllowLogin(false))
+           },1000)
+          
+      }else{
+        console.log('LOGIN ENABLED')
+        setTimeout(()=>{
+          dispatch(setWarningAllowLogin(true))
+       },1000)
+      }
+     
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
     useEffect(() => {
       getPackage()
@@ -37,6 +68,14 @@ export default function Users() {
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+   if(allowReloadStats){
+     getStats()
+     dispatch(setAllowReloadStats(false))
+   }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [allowReloadStats])
   
   const getPackage = () => {
     const URL = process.env.NEXT_PUBLIC_API_URL_V1
@@ -137,6 +176,9 @@ export default function Users() {
 
                 <section className="w-full mx-auto text-white animated fadeIn">
 
+                <p className="bold mb-2 text-lg">Admin userID : {userid}</p>
+  <h3>Asmin referrals Link : https://fivefortunefx.com?ref={userid}</h3>
+ 
 
                     {/* <div className="text-center py-2 px-4 mb-2">
                     <p className="uppercase bold mb-2 text-xl">* ADMIN DASHBOARD *</p>              

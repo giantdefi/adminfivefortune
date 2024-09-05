@@ -25,6 +25,7 @@ export default function Users() {
     const dispatch = useDispatch()
     const [spinner, setSpinner] = useState(false)
     const [loader, setLoader] = useState(false)
+    const [stats, setStats] = useState(false)
     const { formError } = useSelector((state) => state.ErrorReducer)
     const { mainSidebarOpen } = useSelector((state) => state.MainmenuReducer)
     const { adminPackageArray, allowRelaodPackage } = useSelector((state) => state.PackageReducer)
@@ -102,7 +103,8 @@ export default function Users() {
                 if (data.isSuccess) {
 
                   
-                    setWdRequestrray(data.dataLimit)            
+                    setWdRequestrray(data.dataLimit)   
+                    setStats(data.stats)         
                  //   dispatch(setModalToast({ type: data.type, title : data.title, message: data.message })) 
 
 
@@ -123,10 +125,10 @@ export default function Users() {
             })
     }
  
-const handleWDPaid  = (pid, status) => {
+const handleWDPaid  = (pid, status, amount) => {
     setSpinnerPID(pid)
     setSpinner(true)
-        const data = {pid, status }
+        const data = {pid, status, amount}
 
      //   console.log(data)
 
@@ -172,7 +174,7 @@ const handleWDPaid  = (pid, status) => {
   
 }
 //   console.log(allowReload)
-//   console.log(spinnerPID)
+  // console.log(stats)
 
 
     return (
@@ -189,9 +191,10 @@ const handleWDPaid  = (pid, status) => {
 
   <div className="w-full lg:w-10/12  min-h-screen text-white justify-center bg-gray-800 pt-10">  
 
-  <div className="flex w-full justify-cebter">
+  <div className="flex flex-col centered w-full justify-cebter">
   <h2 className="mx-auto bold">WD REQUEST</h2> 
-
+  <p>Total WD Request : {stats.wd_request}</p>
+  <p>Total WD Paid : {stats.wd_paid}</p>
   </div>
 
    
@@ -255,7 +258,7 @@ const handleWDPaid  = (pid, status) => {
 
                                                 </td>
                                                 <td className="text-center text-sm"> 
-                                                { item.paid?    <button onClick={()=>handleWDPaid(item.id, item.paid)} className=" my-6 text-white bg-red-700   font-medium rounded-lg text-sm px-5 py-2.5 
+                                                { item.paid?    <button onClick={()=>handleWDPaid(item.id, item.paid, item.amount)} className=" my-6 text-white bg-red-700   font-medium rounded-lg text-sm px-5 py-2.5 
                                                 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
                                                 {spinner && spinnerPID === item.id &&
                                                  <svg style={{ maxWidth: 40 }} role="status" className="mr-1 inline w-4 h-4 text-gray-200 dark:text-gray-300 animate-spin  fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -264,7 +267,7 @@ const handleWDPaid  = (pid, status) => {
                                                 </svg>}
                                                  RESET 
                                                  </button> :
-                                                <button onClick={()=>handleWDPaid(item.id, item.paid)} className="my-6 text-white bg-blue-700   font-medium rounded-lg text-sm px-5 py-2.5 
+                                                <button onClick={()=>handleWDPaid(item.id, item.paid, item.amount)} className="my-6 text-white bg-blue-700   font-medium rounded-lg text-sm px-5 py-2.5 
                                                 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
                                                  {spinner && spinnerPID === item.id &&
                                                  <svg style={{ maxWidth: 40 }} role="status" className="mr-1 inline w-4 h-4 text-gray-200 dark:text-gray-300 animate-spin  fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

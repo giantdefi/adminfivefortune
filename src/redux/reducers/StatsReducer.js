@@ -7,7 +7,7 @@ const initialState = {
     total_wd : false,
     total_paid : false,
     users_stats : false, // for graph
-    
+    allowReloadStats : false
 
     
 }
@@ -31,13 +31,16 @@ export const StatstSlice = createSlice({
         setUsers_stats: (state, action) => { // not used to prevent error only
             state.users_stats = action.payload 
         },
+        setAllowReloadStats: (state, action) => { // not used to prevent error only
+            state.allowReloadStats = action.payload 
+        },
        
      
     }
 
 })
 
-export const { setTotal_users,setActive_users,setTotal_wd,setTotal_paid, setUsers_stats
+export const { setTotal_users,setActive_users,setTotal_wd,setTotal_paid, setUsers_stats, setAllowReloadStats
   
 } = StatstSlice.actions
 

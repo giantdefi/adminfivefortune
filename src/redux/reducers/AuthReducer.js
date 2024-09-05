@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   isLogin: false,
+  userid : false,
   isActive : false,
   isAdmin : false,
   name: false,
@@ -9,7 +10,9 @@ const initialState = {
   sponsor: false, // object
   token: false,
   wallet : false,
-  authToken :  false
+  authToken :  false,
+
+  warningAllowLogin : true,
 
  
 }
@@ -21,6 +24,9 @@ export const AuthSlice = createSlice({
    
     setIsLogin: (state, action) => {
       state.isLogin = action.payload
+    },
+    setUserid: (state, action) => {
+      state.userid = action.payload
     },
     setIsActive: (state, action) => {
       state.isActive = action.payload
@@ -47,6 +53,9 @@ export const AuthSlice = createSlice({
     setAuthToken: (state, action) => {
       state.authToken = action.payload
   },
+   setWarningAllowLogin: (state, action) => {
+    state.warningAllowLogin = action.payload
+   },
   
   
    
@@ -55,7 +64,8 @@ export const AuthSlice = createSlice({
 
 })
 
-export const { setLogout,setIsLogin, setName, setIsActive, setIsAdmin, setToken, setWallet, setSponsor, setAuthToken, setEmail
+export const { setLogout, setUserid, setIsLogin, setName, setIsActive, setIsAdmin, setToken, setWallet, setSponsor, setAuthToken, setEmail,
+  setWarningAllowLogin
   
   
 

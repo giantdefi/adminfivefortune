@@ -10,7 +10,7 @@ import { setShowLogin } from 'redux/reducers/SidebarReducer'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLoginSidebar } from 'redux/reducers/MainmenuReducer'
 import { setError } from 'redux/reducers/ErrorReducer'
-import {  setIsLogin, setName, setWallet,setEmail, setToken, setSponsor, setIsActive, setIsAdmin, setAuthToken } from 'redux/reducers/AuthReducer'
+import {  setIsLogin, setName, setUserid, setWallet,setEmail, setToken, setSponsor, setIsActive, setIsAdmin, setAuthToken } from 'redux/reducers/AuthReducer'
 import { setModalLogin,setModalRegister, setModalMessage, setModalToast } from 'redux/reducers/ModalReducer'
 
 //--------------------------------------
@@ -26,8 +26,30 @@ export default function Home() {
 // const [email, setEmail] = useState(false)
   const [password, setPassword] = useState(false)
   const { formError } = useSelector((state) => state.ErrorReducer)
-  const { isLogin, name,email  } = useSelector((state) => state.AuthReducer)
+  const { isLogin, name,email, warningAllowLogin  } = useSelector((state) => state.AuthReducer)
   const [showPassword, SetShowPassword] = useState(false)
+
+
+//   useEffect(() => {
+
+//     const timeNow = parseInt(Date.now() / 1000)
+//     var date1 = new Date()
+//     let date = date1.getDate();
+//     let year = date1.getFullYear()
+//     let month = date1.getMonth() + 1
+//     const datefull = date+'/'+month+'/'+year;
+//     console.log(date)
+//     console.log(datefull)
+
+//     if( datefull === '5/9/2024') {
+//         console.log('LOGIN DISABLED')
+//         router.push('/logout')
+//         SetAllowLogin(false)
+//     }
+   
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+// }, [])
+
 
 const toggleLogin = () => {
     dispatch(resetForm())
@@ -54,7 +76,7 @@ const togglePassword = () =>{
 
 const handleLogin = () => {
 
-
+  
    
     if (!email) {
         setSpinner(false)
@@ -100,10 +122,14 @@ const handleLoginDelay = async () => {
 
                 const token = response.data.token
                 const dataLogin = response.data.dataLogin
-
+                if(!dataLogin.isAdmin) {
+                    dispatch(setModalToast({ type: "error", title : "LOGIN FAIL", message: 'You are not administrator' })) 
+                }else{
                 dispatch(setIsLogin(true))
                 dispatch(setToken(token))
-                dispatch(setName(dataLogin.name))
+                dispatch(setName(dataLogin.name)) 
+                dispatch(setUserid(dataLogin.userid)) 
+
                 dispatch(setIsActive(dataLogin.isActive))
                 dispatch(setIsAdmin(dataLogin.isAdmin))
                 dispatch(setSponsor(dataLogin.sponsor))            
@@ -112,6 +138,9 @@ const handleLoginDelay = async () => {
                 dispatch(setLoginSidebar(false)) 
                 dispatch(setModalMessage({ type: "success", title : "AWESOME", message: 'You are now Loged In' })) 
                 return router.push('/admin')
+
+                }
+              
 
             } else {
 
@@ -129,7 +158,7 @@ const handleLoginDelay = async () => {
         })
 }
 
-
+console.log(warningAllowLogin)
 
 
 return (
@@ -226,7 +255,7 @@ return (
             <a href="#" class="ms-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
         </div>
      
-        {spinner ?
+        {spinner  ?
                 <button className="w-full my-6 text-white bg-blue-700 hover:bg-blue-800 
                 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
                 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -236,17 +265,25 @@ return (
                     </svg>
                     processing.....</button>
                 :
+                warningAllowLogin ?
                     <button onClick={handleLogin} className="w-full my-6 text-white bg-blue-700 hover:bg-blue-800 
   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
-  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">  Login Admin</button>
+  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">  LOGIN ADMIN</button>
+   :
+  <button  className="w-full my-6 text-white bg-blue-700 hover:bg-blue-800 
+  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
+  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
+  <i className="icofont-warning text-yellow-700 text-2xl mr-2"></i>
+   SORRY, LOGIN IS DISABLED!</button>
              }
     
       
     </div>
     <div class="flex justify-end">
+       
     <button onClick={()=>dispatch(setLoginSidebar(false))} className="w-1/4 my-6 text-white bg-red-700 hover:bg-red-800 
   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
-  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">  Close</button>
+  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">  Close</button> 
   </div>
       
         
