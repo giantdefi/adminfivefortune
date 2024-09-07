@@ -38,6 +38,10 @@ const initialState = {
    currentemail : false,
    newEmail : false,
 
+   // modal send wallet
+   toUserID : false,
+   SendAmount : false,
+
 }
 
 export const FormSlice = createSlice({
@@ -107,6 +111,12 @@ export const FormSlice = createSlice({
       setNewPasswordConfirm: (state, action) => {
         state.newPasswordConfirm = action.payload
       },
+      setToUserID: (state, action) => {
+        state.toUserID = action.payload
+      },
+      setSendAmount: (state, action) => {
+        state.SendAmount = action.payload
+      },
  
 
         resetForm: () => initialState
@@ -119,7 +129,7 @@ export const {  resetForm,
     setFormSponsor, setFormName, setFormUsername, setFormPhone, setFormPassword,  
     setFormConfirmPassword, setFormEmail, setConfirmPassword, setCountry ,
     setCurrentpassword, setNewPassword, setNewPasswordConfirm, setFirstName, setLastName,
-    setCurrentemail, setNewEmail
+    setCurrentemail, setNewEmail, setToUserID, setSendAmount
 
 } = FormSlice.actions
 

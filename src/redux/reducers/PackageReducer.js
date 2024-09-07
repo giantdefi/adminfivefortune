@@ -7,6 +7,8 @@ const initialState = {
 
 
   allowRelaodPackage : false,
+
+  statsSelectedPackage : false
     
 }
 
@@ -23,11 +25,14 @@ export const PackageSlice = createSlice({
         setAllowRelaodPAckage: (state, action) => { // not used to prevent error only
             state.allowRelaodPackage = action.payload
         },
+        setStatsSelectedPackage: (state, action) => { // not used to prevent error only
+            state.statsSelectedPackage = action.payload
+        },
      
     }
 
 })
 
-export const { setAdminPackageArray, setAllowRelaodPAckage, setItemToEdit} = PackageSlice.actions
+export const { setAdminPackageArray, setAllowRelaodPAckage, setItemToEdit, setStatsSelectedPackage} = PackageSlice.actions
 
 export default PackageSlice.reducer

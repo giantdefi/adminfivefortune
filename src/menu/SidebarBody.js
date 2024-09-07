@@ -234,7 +234,14 @@ const handleResetApp = () => {
 
             <ul className={mainSidebarOpen && dropdownOpen === 3 ? "d-block animated fadeIn bg-blue-700/20 dark:bg-slate-900 py-2 pb-6" : "hidden"}>
             
-           
+            <li className="cursor-pointer hover:text-green-300">
+                <a onClick={()=>router.push('/admin/deposit-request')} className={` flex flex-row items-center h-10  pl-6 
+                    ${itemSelected === 4 && dropdownOpen === 3 && 'bg-white bg-opacity-10'}`}>
+                  <p className="text-sm ">
+                    <i className="icofont-wallet text-lg mr-1 text-yellow-300 hover:text-green-300"></i> Deposit Request</p>
+                </a>
+              </li>
+
               <li className="cursor-pointer hover:text-green-300">
                 <a onClick={()=>router.push('/admin/send-wallet')} className={` flex flex-row items-center h-10  pl-6 
                     ${itemSelected === 4 && dropdownOpen === 3 && 'bg-white bg-opacity-10'}`}>
@@ -247,7 +254,7 @@ const handleResetApp = () => {
                 <a onClick={()=>router.push('/admin/wd-request')} className={` flex flex-row items-center h-10  pl-6 
                     ${itemSelected === 4 && dropdownOpen === 3 && 'bg-white bg-opacity-10'}`}>
                   <p className="text-sm ">
-                    <i className="icofont-wallet text-lg mr-1 text-yellow-300 hover:text-green-300"></i> WD REquest</p>
+                    <i className="icofont-wallet text-lg mr-1 text-yellow-300 hover:text-green-300"></i> WD Request</p>
                 </a>
               </li>
 

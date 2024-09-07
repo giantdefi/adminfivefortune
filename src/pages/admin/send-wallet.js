@@ -316,11 +316,7 @@ export default function Users() {
                                         )
                                     })}
 
-                                     {/* {!loader && !history &&
-                                        <tr className="bg-gray-800 text-white text-center h-12 border-b border-gray-600">
-                                            <td colSpan={5} className="text-sm">No transactions  found!</td>
-                                        </tr>
-                                    }  */}
+                               
 
                                 </tbody>
                             </table>

@@ -5,7 +5,7 @@ const initialState = {
   modalToast: false, // will consist ( true/false, modalType, message )
   modalConfirmLogOut: false, 
   modalMenuDrawer: false,
-
+  modalSendWallet: false,
 };
 
 export const modalSlice = createSlice({
@@ -24,7 +24,9 @@ export const modalSlice = createSlice({
     setModalMenuDrawer: (state, action) => {
       state.modalMenuDrawer = action.payload
     },
-   
+    setModalSendWallet: (state, action) => {
+      state.modalSendWallet = action.payload
+    },
 
    
 
@@ -35,7 +37,7 @@ export const modalSlice = createSlice({
 });
 
 export const { 
-  resetModal, setModalMessage, setModalToast, setModalConfirmLogOut, setModalMenuDrawer
+  resetModal, setModalMessage, setModalToast, setModalConfirmLogOut, setModalMenuDrawer, setModalSendWallet
 
    
 } = modalSlice.actions;

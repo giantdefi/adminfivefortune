@@ -13,7 +13,7 @@ import ModalMessage from "components/modal/ModalMessage"
 import ModalToast from "components/modal/ModalToast"
 import ReferralLink from "components/reflink/ReferralLink"
 
-//import ModalMenuDrawer from "components/modal/ModalMenuDrawer" 
+import ModalSendWallet from "components/modal/ModalSendWallet" 
 import MobileTopNavigation from "./MobileTopNavigation"
 
 import { setWidth } from 'redux/reducers/GeneralReducer'
@@ -36,7 +36,7 @@ export default function MainLayout({ children }) { // not used yet!
 
   const { isLogin } = useSelector((state) => state.AuthReducer)
   const { mainSidebarOpen } = useSelector((state) => state.MainmenuReducer)
-  const { modalMessage, modalToast, modalMenuDrawer } = useSelector((state) => state.ModalReducer)
+  const { modalMessage, modalToast, modalSendWallet } = useSelector((state) => state.ModalReducer)
 
     useEffect(() => { // default when load
        
@@ -114,7 +114,7 @@ export default function MainLayout({ children }) { // not used yet!
 
       {modalMessage && <ModalMessage />}
       {modalToast && <ModalToast />}
-      {/* {modalMenuDrawer && <ModalMenuDrawer />} */}
+    {modalSendWallet && <ModalSendWallet />} 
   
    
     
